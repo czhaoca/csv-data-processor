@@ -3,12 +3,12 @@
 import sys
 from pathlib import Path
 
-# Get project paths
-project_root = Path.cwd()
+# Get project paths - handle both development and CI build scenarios
+project_root = Path(__file__).parent.parent  # Go up from build_scripts/ to project root
 src_path = project_root / "src"
 
 a = Analysis(
-    ['main.py'],
+    [str(project_root / 'main.py')],
     pathex=[str(project_root), str(src_path)],
     binaries=[],
     datas=[
