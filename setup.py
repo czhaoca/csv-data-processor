@@ -44,7 +44,7 @@ for req in requirements:
 
 setup(
     name="csv-splitter-gui",
-    version="2.0.0",
+    version="2.1.0",
     author="CSV Splitter Team",
     author_email="",
     description="A modern, modular Python GUI application for splitting CSV files",

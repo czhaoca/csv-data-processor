@@ -5,7 +5,27 @@ All notable changes to the CSV Splitter GUI project will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-06-18
+## [2.1.0] - 2025-06-18
+
+### Changed
+- **Improved Terminology**: Replaced confusing "group by" language with clearer "split by" throughout the application
+  - Updated all variable names: `groupby_fields` → `split_by_fields`
+  - Updated method names: `get_groupby_fields()` → `get_split_by_fields()`
+  - Updated GUI labels: "Group By" → "Split By" 
+  - Updated error messages and constants
+  - Updated all documentation, comments, and help text
+- **Enhanced User Experience**: The new terminology makes it immediately clear that the application splits CSV files into multiple files, rather than performing SQL-like grouping operations
+- **Improved Output File Naming**: Enhanced filename convention to include original filename
+  - Format: `SplitByValue1-SplitByValue2_OriginalFileName.csv`
+  - Example: `Finance-Active_employeeList.csv` for file `employeeList.csv` split by Department='Finance' and Status='Active'
+
+### Technical
+- Maintained full backward compatibility of all functionality
+- Updated comprehensive test suite with new terminology
+- Updated all documentation files (README, USER_GUIDE, ARCHITECTURE)
+- No breaking changes to public APIs
+
+## [2.0.0] - 2025-06-18
 
 ### Added
 - **Modular Architecture**: Complete refactoring into clean, modular components
