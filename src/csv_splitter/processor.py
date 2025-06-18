@@ -110,7 +110,7 @@ class CSVProcessor:
             group_data, header = self._read_and_group_csv(source_file, groupby_fields, included_fields)
             
             # Write grouped data to files
-            files_created = self._write_grouped_files(output_dir, group_data, header, groupby_fields)
+            files_created = self._write_grouped_files(source_file, output_dir, group_data, header, groupby_fields)
             
             total_rows = sum(len(rows) for rows in group_data.values())
             
@@ -190,6 +190,7 @@ class CSVProcessor:
     
     def _write_grouped_files(
         self, 
+        source_file: str,
         output_dir: str, 
         group_data: Dict[Tuple, List[List[str]]], 
         header: List[str], 
@@ -200,7 +201,7 @@ class CSVProcessor:
         
         for group_key, rows in group_data.items():
             try:
-                filename = self._generate_filename(group_key, groupby_fields)
+                filename = self._generate_filename(source_file, group_key, groupby_fields)
                 output_file = os.path.join(output_dir, filename)
                 
                 with open(output_file, 'w', newline='', encoding=Config.DEFAULT_ENCODING) as csvfile:
@@ -219,20 +220,26 @@ class CSVProcessor:
         
         return files_created
     
-    def _generate_filename(self, group_key: Tuple, groupby_fields: List[str]) -> str:
-        """Generate a clean filename from group key values."""
-        if len(group_key) == 1:
-            filename_parts = [str(group_key[0])]
-        else:
-            filename_parts = [f"{groupby_fields[i]}_{group_key[i]}" for i in range(len(group_key))]
+    def _generate_filename(self, source_file: str, group_key: Tuple, groupby_fields: List[str]) -> str:
+        """Generate a clean filename from group key values and original filename."""
+        # Extract original filename without extension
+        original_filename = Path(source_file).stem
         
-        # Clean filename parts to ensure valid filesystem names
-        clean_parts = []
-        for part in filename_parts:
-            clean_part = "".join(c for c in str(part) if c.isalnum() or c in (' ', '-', '_')).rstrip()
-            clean_parts.append(clean_part if clean_part else "empty")
+        # Create group value parts (concatenated with dashes)
+        group_values = []
+        for i, value in enumerate(group_key):
+            clean_value = "".join(c for c in str(value) if c.isalnum() or c in (' ', '-', '_')).rstrip()
+            group_values.append(clean_value if clean_value else "empty")
         
-        return "_".join(clean_parts) + Config.CSV_EXTENSION
+        # Join group values with dashes
+        group_part = "-".join(group_values)
+        
+        # Clean original filename
+        clean_original = "".join(c for c in original_filename if c.isalnum() or c in (' ', '-', '_')).rstrip()
+        clean_original = clean_original if clean_original else "file"
+        
+        # Combine: GroupByValue1-GroupByValue2_OriginalFileName.csv
+        return f"{group_part}_{clean_original}{Config.CSV_EXTENSION}"
     
     def _format_group_display(self, group_key: Tuple, groupby_fields: List[str]) -> str:
         """Format group key for display purposes."""
