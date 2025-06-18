@@ -29,6 +29,8 @@ MANIFEST
 # PyInstaller
 *.manifest
 *.spec
+!CSV-Splitter-GUI.spec
+!CSV-Splitter-GUI-macOS.spec
 
 # Installer logs
 pip-log.txt
