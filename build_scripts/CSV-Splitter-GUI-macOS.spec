@@ -1,10 +1,17 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 import sys
+import os
 from pathlib import Path
 
 # Get project paths - handle both development and CI build scenarios
-project_root = Path(__file__).parent.parent  # Go up from build_scripts/ to project root
+# When run via pyinstaller, we need to use SPECPATH or current working directory
+if hasattr(sys, '_MEIPASS'):
+    # Running as compiled executable
+    project_root = Path.cwd()
+else:
+    # Running from source - assume pyinstaller is run from project root
+    project_root = Path(os.environ.get('PYINSTALLER_ROOT', '.'))
 src_path = project_root / "src"
 
 a = Analysis(
