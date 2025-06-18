@@ -1,0 +1,76 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pyinstaller
+    - name: Build Windows executable
+      run: |
+        pyinstaller --clean --onefile --windowed --name "CSV-Splitter-GUI" --add-data "src/csv_splitter;csv_splitter" --hidden-import "csv_splitter" --hidden-import "csv_splitter.gui" --hidden-import "csv_splitter.processor" --hidden-import "csv_splitter.config" --hidden-import "csv_splitter.exceptions" --hidden-import "csv_splitter.ui_components" --hidden-import "csv_splitter.logger" main.py
+    - name: Upload Windows artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: windows-executable
+        path: dist/CSV-Splitter-GUI.exe
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pyinstaller
+    - name: Build macOS app
+      run: |
+        pyinstaller --clean --onedir --windowed --name "CSV-Splitter-GUI" --add-data "src/csv_splitter:csv_splitter" --hidden-import "csv_splitter" --hidden-import "csv_splitter.gui" --hidden-import "csv_splitter.processor" --hidden-import "csv_splitter.config" --hidden-import "csv_splitter.exceptions" --hidden-import "csv_splitter.ui_components" --hidden-import "csv_splitter.logger" main.py
+        cd dist && zip -r CSV-Splitter-GUI-macOS.zip CSV-Splitter-GUI.app
+    - name: Upload macOS artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: macos-app
+        path: dist/CSV-Splitter-GUI-macOS.zip
+
+  create-release:
+    needs: [build-windows, build-macos]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Download Windows artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: windows-executable
+        path: ./artifacts/
+    - name: Download macOS artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: macos-app
+        path: ./artifacts/
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ./artifacts/CSV-Splitter-GUI.exe
+          ./artifacts/CSV-Splitter-GUI-macOS.zip
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
