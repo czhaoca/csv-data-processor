@@ -24,7 +24,7 @@ jobs:
         pip install pyinstaller
     - name: Build Windows executable
       run: |
-        pyinstaller --clean --onefile --windowed --name "CSV-Splitter-GUI" --add-data "src/csv_splitter;csv_splitter" --hidden-import "csv_splitter" --hidden-import "csv_splitter.gui" --hidden-import "csv_splitter.processor" --hidden-import "csv_splitter.config" --hidden-import "csv_splitter.exceptions" --hidden-import "csv_splitter.ui_components" --hidden-import "csv_splitter.logger" main.py
+        pyinstaller CSV-Splitter-GUI.spec --clean
     - name: Upload Windows artifact
       uses: actions/upload-artifact@v4
       with:
@@ -45,7 +45,7 @@ jobs:
         pip install pyinstaller
     - name: Build macOS app
       run: |
-        pyinstaller --clean --onedir --windowed --name "CSV-Splitter-GUI" --add-data "src/csv_splitter:csv_splitter" --hidden-import "csv_splitter" --hidden-import "csv_splitter.gui" --hidden-import "csv_splitter.processor" --hidden-import "csv_splitter.config" --hidden-import "csv_splitter.exceptions" --hidden-import "csv_splitter.ui_components" --hidden-import "csv_splitter.logger" main.py
+        pyinstaller CSV-Splitter-GUI-macOS.spec --clean
         cd dist && zip -r CSV-Splitter-GUI-macOS.zip CSV-Splitter-GUI.app
     - name: Upload macOS artifact
       uses: actions/upload-artifact@v4
