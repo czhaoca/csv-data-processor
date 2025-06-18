@@ -24,7 +24,7 @@ jobs:
         pip install pyinstaller
     - name: Build Windows executable
       run: |
-        pyinstaller CSV-Splitter-GUI.spec --clean
+        pyinstaller build_scripts/CSV-Splitter-GUI.spec --clean
     - name: Sign Windows executable (if certificate available)
       if: env.WINDOWS_CERT_BASE64 != ''
       run: |
@@ -54,7 +54,7 @@ jobs:
         pip install pyinstaller
     - name: Build macOS app
       run: |
-        pyinstaller CSV-Splitter-GUI-macOS.spec --clean
+        pyinstaller build_scripts/CSV-Splitter-GUI-macOS.spec --clean
         cd dist && zip -r CSV-Splitter-GUI-macOS.zip CSV-Splitter-GUI.app
     - name: Upload macOS artifact
       uses: actions/upload-artifact@v4

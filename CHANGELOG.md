@@ -5,7 +5,7 @@ All notable changes to the CSV Splitter GUI project will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2025-06-18
+## [1.0.0] - 2025-06-18
 
 ### Added
 - **Modular Architecture**: Complete refactoring into clean, modular components
@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Professional Project Structure**: Standard Python package layout
 - **Development Tools**: Setup for testing, linting, and code formatting
 - **Package Installation**: Support for pip installation and console scripts
+- **Cross-platform Builds**: GitHub Actions workflow for Windows/macOS executables
+- **Code Signing Support**: Ready for Windows code signing to eliminate SmartScreen warnings
+- **PyInstaller Spec Files**: Proper build configurations for consistent executables
 
 ### Changed
 - **Project Organization**: Reorganized into standard Python package structure

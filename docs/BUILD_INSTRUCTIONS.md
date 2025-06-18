@@ -54,7 +54,7 @@ build_scripts\build_windows.bat
 #### Manual Build
 ```cmd
 pip install pyinstaller
-pyinstaller --clean --onefile --windowed --name "CSV-Splitter-GUI" --add-data "src/csv_splitter;csv_splitter" main.py
+pyinstaller build_scripts/CSV-Splitter-GUI.spec --clean
 ```
 
 **Output**: `dist/CSV-Splitter-GUI.exe`
@@ -75,7 +75,7 @@ bash build_scripts/build_macos.sh
 #### Manual Build
 ```bash
 pip install pyinstaller
-pyinstaller --clean --onefile --windowed --name "CSV-Splitter-GUI" --add-data "src/csv_splitter:csv_splitter" main.py
+pyinstaller build_scripts/CSV-Splitter-GUI-macOS.spec --clean
 ```
 
 **Output**: `dist/CSV Splitter GUI.app`
