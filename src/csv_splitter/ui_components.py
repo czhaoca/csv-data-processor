@@ -11,14 +11,14 @@ from .config import Config
 
 
 class FieldSelectionTable:
-    """Manages the field selection table with group by and include checkboxes."""
+    """Manages the field selection table with split by and include checkboxes."""
     
     def __init__(self, parent_frame: ttk.Frame):
         self.parent_frame = parent_frame
         self.scrollable_frame: Optional[ttk.Frame] = None
         self.canvas: Optional[tk.Canvas] = None
         self.scrollbar: Optional[ttk.Scrollbar] = None
-        self.groupby_vars: Dict[str, tk.BooleanVar] = {}
+        self.split_by_vars: Dict[str, tk.BooleanVar] = {}
         self.include_vars: Dict[str, tk.BooleanVar] = {}
         
         self._setup_scrollable_frame()
@@ -56,7 +56,7 @@ class FieldSelectionTable:
         
         ttk.Label(
             self.scrollable_frame, 
-            text="Group By", 
+            text="Split By", 
             font=('TkDefaultFont', 9, 'bold')
         ).grid(row=0, column=1, padx=5, pady=2)
         
@@ -82,12 +82,12 @@ class FieldSelectionTable:
                 text=header
             ).grid(row=row, column=0, sticky=tk.W, padx=5, pady=1)
             
-            # Group by checkbox
-            groupby_var = tk.BooleanVar()
-            self.groupby_vars[header] = groupby_var
+            # Split by checkbox
+            split_by_var = tk.BooleanVar()
+            self.split_by_vars[header] = split_by_var
             ttk.Checkbutton(
                 self.scrollable_frame, 
-                variable=groupby_var
+                variable=split_by_var
             ).grid(row=row, column=1, padx=20, pady=1)
             
             # Include in output checkbox (default checked)
@@ -104,25 +104,25 @@ class FieldSelectionTable:
             for widget in self.scrollable_frame.winfo_children():
                 widget.destroy()
         
-        self.groupby_vars.clear()
+        self.split_by_vars.clear()
         self.include_vars.clear()
     
-    def get_groupby_fields(self) -> List[str]:
-        """Get list of fields selected for grouping."""
-        return [field for field, var in self.groupby_vars.items() if var.get()]
+    def get_split_by_fields(self) -> List[str]:
+        """Get list of fields selected for splitting."""
+        return [field for field, var in self.split_by_vars.items() if var.get()]
     
     def get_included_fields(self) -> List[str]:
         """Get list of fields selected for output."""
         return [field for field, var in self.include_vars.items() if var.get()]
     
-    def select_all_groups(self) -> None:
-        """Select all group by checkboxes."""
-        for var in self.groupby_vars.values():
+    def select_all_split_by(self) -> None:
+        """Select all split by checkboxes."""
+        for var in self.split_by_vars.values():
             var.set(True)
     
-    def clear_all_groups(self) -> None:
-        """Clear all group by checkboxes."""
-        for var in self.groupby_vars.values():
+    def clear_all_split_by(self) -> None:
+        """Clear all split by checkboxes."""
+        for var in self.split_by_vars.values():
             var.set(False)
     
     def select_all_fields(self) -> None:
@@ -226,7 +226,7 @@ class ValidationHelper:
     def validate_inputs(
         input_file: str,
         output_dir: str, 
-        groupby_fields: List[str],
+        split_by_fields: List[str],
         included_fields: List[str]
     ) -> bool:
         """
@@ -235,7 +235,7 @@ class ValidationHelper:
         Args:
             input_file: Path to input CSV file
             output_dir: Output directory path
-            groupby_fields: List of groupby field names
+            split_by_fields: List of split_by field names
             included_fields: List of included field names
             
         Returns:
@@ -249,8 +249,8 @@ class ValidationHelper:
             messagebox.showerror("Error", Config.ERROR_FILE_NOT_EXISTS)
             return False
         
-        if not groupby_fields:
-            messagebox.showerror("Error", Config.ERROR_NO_GROUPBY_FIELDS)
+        if not split_by_fields:
+            messagebox.showerror("Error", Config.ERROR_NO_SPLIT_BY_FIELDS)
             return False
         
         if not included_fields:

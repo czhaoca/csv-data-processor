@@ -4,12 +4,12 @@ A modern, modular Python GUI application for splitting CSV files based on user-s
 
 ## Overview
 
-This application enables users to split large CSV files into multiple organized files based on field values. With its flexible grouping system and field selection capabilities, it's perfect for data analysis, reporting workflows, and batch processing scenarios.
+This application enables users to split large CSV files into multiple organized files based on field values. With its flexible splitting system and field selection capabilities, it's perfect for data analysis, reporting workflows, and batch processing scenarios.
 
 ## Features
 
 ### Core Functionality
-- **Multi-field grouping**: Group data by single or multiple field combinations
+- **Multi-field splitting**: Split data by single or multiple field combinations
 - **Flexible field selection**: Choose exactly which fields to include in output files
 - **Advanced CSV processing**: Handles large files with memory-efficient algorithms
 - **Robust error handling**: Comprehensive validation and error reporting
@@ -77,7 +77,7 @@ python legacy/tb_seperator.py <source_csv_file>
 
 1. **Select Input File**: Click "Browse" to choose your CSV file
 2. **Configure Field Selection**:
-   - **Group By**: Check fields to use for data grouping (supports multiple fields)
+   - **Split By**: Check fields to use for data splitting (supports multiple fields)
    - **Include in Output**: Check fields to include in output files (all selected by default)
 3. **Set Output Directory**: Choose destination folder (auto-suggests based on input file)
 4. **Process Data**: Click "Process CSV" to start the operation

@@ -44,14 +44,14 @@ def test_csv_processing():
         root.withdraw()  # Hide the window
         gui = CSVSplitterGUI(root)
         
-        # Test case 1: Group by single field (DEPARTMENT)
-        print("Test 1: Group by DEPARTMENT")
-        groupby_fields = ['DEPARTMENT']
+        # Test case 1: Split by single field (DEPARTMENT)
+        print("Test 1: Split by DEPARTMENT")
+        split_by_fields = ['DEPARTMENT']
         included_fields = ['ID', 'NAME', 'SALARY', 'LOCATION', 'STATUS']
         
         test1_dir = os.path.join(output_dir, "test1")
         os.makedirs(test1_dir, exist_ok=True)
-        result = gui.processor.split_csv_by_fields(test_file, test1_dir, groupby_fields, included_fields)
+        result = gui.processor.split_csv_by_fields(test_file, test1_dir, split_by_fields, included_fields)
         
         if result.success:
             print(f"✓ Created {result.files_created} files, processed {result.total_rows} rows")
@@ -69,14 +69,14 @@ def test_csv_processing():
         else:
             print(f"✗ Error: {result.error}")
         
-        # Test case 2: Group by multiple fields (DEPARTMENT + LOCATION)
-        print("\nTest 2: Group by DEPARTMENT + LOCATION")
-        groupby_fields = ['DEPARTMENT', 'LOCATION']
+        # Test case 2: Split by multiple fields (DEPARTMENT + LOCATION)
+        print("\nTest 2: Split by DEPARTMENT + LOCATION")
+        split_by_fields = ['DEPARTMENT', 'LOCATION']
         included_fields = ['ID', 'NAME', 'SALARY', 'STATUS']
         
         test2_dir = os.path.join(output_dir, "test2")
         os.makedirs(test2_dir, exist_ok=True)
-        result = gui.processor.split_csv_by_fields(test_file, test2_dir, groupby_fields, included_fields)
+        result = gui.processor.split_csv_by_fields(test_file, test2_dir, split_by_fields, included_fields)
         
         if result.success:
             print(f"✓ Created {result.files_created} files, processed {result.total_rows} rows")
@@ -88,14 +88,14 @@ def test_csv_processing():
         else:
             print(f"✗ Error: {result.error}")
         
-        # Test case 3: Group by STATUS, include only specific fields
-        print("\nTest 3: Group by STATUS, limited fields")
-        groupby_fields = ['STATUS']
+        # Test case 3: Split by STATUS, include only specific fields
+        print("\nTest 3: Split by STATUS, limited fields")
+        split_by_fields = ['STATUS']
         included_fields = ['NAME', 'DEPARTMENT', 'SALARY']
         
         test3_dir = os.path.join(output_dir, "test3")
         os.makedirs(test3_dir, exist_ok=True)
-        result = gui.split_csv_by_fields(test_file, test3_dir, groupby_fields, included_fields)
+        result = gui.split_csv_by_fields(test_file, test3_dir, split_by_fields, included_fields)
         
         if result.success:
             print(f"✓ Created {result.files_created} files, processed {result.total_rows} rows")

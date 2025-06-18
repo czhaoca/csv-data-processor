@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Modular Architecture**: Complete refactoring into clean, modular components
-- **Multi-field Grouping**: Support for grouping by multiple field combinations  
+- **Multi-field Splitting**: Support for splitting by multiple field combinations  
 - **Flexible Field Selection**: Choose exactly which fields to include in output
 - **Type Safety**: Comprehensive type hints throughout the codebase
 - **Enhanced Error Handling**: Robust exception hierarchy with user-friendly messages
@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deprecated
 - **Monolithic GUI**: `csv_splitter_gui.py` moved to legacy (still functional)
-- **Single-field Separation**: Replaced with flexible multi-field grouping
+- **Single-field Separation**: Replaced with flexible multi-field splitting
 
 ### Removed
 - **Hardcoded Configuration**: Replaced with centralized configuration system
@@ -92,7 +92,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Package Installation**: New option to install as proper Python package
 
 #### New Features to Adopt
-1. **Multi-field Grouping**: Use checkbox interface to select multiple grouping fields
+1. **Multi-field Splitting**: Use checkbox interface to select multiple splitting fields
 2. **Field Selection**: Choose exactly which fields to include in output
 3. **Enhanced Error Handling**: Better error messages and validation
 4. **Progress Tracking**: Improved real-time progress updates

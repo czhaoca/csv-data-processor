@@ -232,14 +232,14 @@ class CSVSplitterGUI:
             self.status_label.config(text="Ready")
     
     def _select_all_groups(self) -> None:
-        """Select all group by checkboxes."""
+        """Select all split by checkboxes."""
         if self.field_table:
-            self.field_table.select_all_groups()
+            self.field_table.select_all_split_by()
     
     def _clear_all_groups(self) -> None:
-        """Clear all group by checkboxes."""
+        """Clear all split by checkboxes."""
         if self.field_table:
-            self.field_table.clear_all_groups()
+            self.field_table.clear_all_split_by()
     
     def _select_all_fields(self) -> None:
         """Select all include field checkboxes."""
@@ -264,13 +264,13 @@ class CSVSplitterGUI:
     
     def _validate_inputs(self) -> bool:
         """Validate user inputs before processing."""
-        groupby_fields = self.field_table.get_groupby_fields() if self.field_table else []
+        split_by_fields = self.field_table.get_split_by_fields() if self.field_table else []
         included_fields = self.field_table.get_included_fields() if self.field_table else []
         
         return ValidationHelper.validate_inputs(
             self.input_file.get(),
             self.output_dir.get(),
-            groupby_fields,
+            split_by_fields,
             included_fields
         )
     
@@ -294,19 +294,19 @@ class CSVSplitterGUI:
             # Get processing parameters
             source_file = self.input_file.get()
             output_dir = self.output_dir.get()
-            groupby_fields = self.field_table.get_groupby_fields()
+            split_by_fields = self.field_table.get_split_by_fields()
             included_fields = self.field_table.get_included_fields()
             
             # Log processing start
             self.root.after(0, lambda: self._log_message("Starting CSV processing"))
             self.root.after(0, lambda: self._log_message(f"Input file: {source_file}"))
             self.root.after(0, lambda: self._log_message(f"Output directory: {output_dir}"))
-            self.root.after(0, lambda: self._log_message(f"Group by fields: {', '.join(groupby_fields)}"))
+            self.root.after(0, lambda: self._log_message(f"Split by fields: {', '.join(split_by_fields)}"))
             self.root.after(0, lambda: self._log_message(f"Included fields: {', '.join(included_fields)}"))
             
             # Process the CSV file
             result = self.processor.split_csv_by_fields(
-                source_file, output_dir, groupby_fields, included_fields
+                source_file, output_dir, split_by_fields, included_fields
             )
             
             # Handle results

@@ -59,12 +59,12 @@ def test_modular_csv_processor():
         
         processor = CSVProcessor(progress_callback=progress_callback)
         
-        # Test 1: Single field grouping
-        print("\n2. Testing single field grouping (DEPARTMENT)...")
+        # Test 1: Single field splitting
+        print("\n2. Testing single field splitting (DEPARTMENT)...")
         result = processor.split_csv_by_fields(
             test_file,
             os.path.join(output_dir, "test1"),
-            groupby_fields=['DEPARTMENT'],
+            split_by_fields=['DEPARTMENT'],
             included_fields=['ID', 'NAME', 'SALARY', 'LOCATION', 'STATUS']
         )
         
@@ -73,12 +73,12 @@ def test_modular_csv_processor():
         else:
             print(f"   ✗ Error: {result.error}")
         
-        # Test 2: Multi-field grouping
-        print("\n3. Testing multi-field grouping (DEPARTMENT + STATUS)...")
+        # Test 2: Multi-field splitting
+        print("\n3. Testing multi-field splitting (DEPARTMENT + STATUS)...")
         result = processor.split_csv_by_fields(
             test_file,
             os.path.join(output_dir, "test2"),
-            groupby_fields=['DEPARTMENT', 'STATUS'],
+            split_by_fields=['DEPARTMENT', 'STATUS'],
             included_fields=['ID', 'NAME', 'SALARY', 'LOCATION']
         )
         
@@ -98,7 +98,7 @@ def test_modular_csv_processor():
         result = processor.split_csv_by_fields(
             test_file,
             os.path.join(output_dir, "test3"),
-            groupby_fields=['NONEXISTENT_FIELD'],
+            split_by_fields=['NONEXISTENT_FIELD'],
             included_fields=['ID', 'NAME']
         )
         

@@ -92,9 +92,9 @@ def main():
     
     print(f"\nTest data generated in: {test_data_dir}")
     print("\nUsage examples:")
-    print("- employee_data.csv: Group by DEPARTMENT, LOCATION, or STATUS")
-    print("- sales_data.csv: Group by REGION, SALES_REP, or PRODUCT")
-    print("- inventory_data.csv: Group by CATEGORY, WAREHOUSE, or SUPPLIER")
+    print("- employee_data.csv: Split by DEPARTMENT, LOCATION, or STATUS")
+    print("- sales_data.csv: Split by REGION, SALES_REP, or PRODUCT")
+    print("- inventory_data.csv: Split by CATEGORY, WAREHOUSE, or SUPPLIER")
     print("\nLoad any of these files in CSV Splitter GUI to test functionality!")
 
 

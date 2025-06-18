@@ -34,7 +34,7 @@ class Config:
     # Error Messages
     ERROR_NO_INPUT_FILE: Final[str] = "Please select an input CSV file"
     ERROR_FILE_NOT_EXISTS: Final[str] = "Input file does not exist"
-    ERROR_NO_GROUPBY_FIELDS: Final[str] = "Please select at least one field to group by"
+    ERROR_NO_SPLIT_BY_FIELDS: Final[str] = "Please select at least one field to split by"
     ERROR_NO_OUTPUT_DIR: Final[str] = "Please specify an output directory"
     ERROR_NO_INCLUDED_FIELDS: Final[str] = "Please select at least one field to include in output"
     

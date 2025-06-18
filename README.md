@@ -4,7 +4,7 @@ A modern, cross-platform Python GUI application for splitting CSV files based on
 
 ## Features
 
-- **Multi-field grouping**: Group data by single or multiple field combinations
+- **Multi-field splitting**: Split data by single or multiple field combinations
 - **Flexible field selection**: Choose exactly which fields to include in output files  
 - **Intuitive GUI**: Clean, modern interface with real-time feedback
 - **Memory efficient**: Handles large files without loading entire dataset

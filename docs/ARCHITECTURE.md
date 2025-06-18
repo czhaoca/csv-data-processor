@@ -119,7 +119,7 @@ processor = CSVProcessor(progress_callback=progress_callback)
 result = processor.split_csv_by_fields(
     source_file="data.csv",
     output_dir="output/",
-    groupby_fields=["Department", "Status"],
+    split_by_fields=["Department", "Status"],
     included_fields=["ID", "Name", "Salary"]
 )
 
@@ -138,7 +138,7 @@ field_table = FieldSelectionTable(parent_frame)
 field_table.update_fields(csv_headers)
 
 # Get user selections
-groupby_fields = field_table.get_groupby_fields()
+split_by_fields = field_table.get_split_by_fields()
 included_fields = field_table.get_included_fields()
 ```
 
