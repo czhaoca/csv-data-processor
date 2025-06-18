@@ -4,14 +4,10 @@ import sys
 import os
 from pathlib import Path
 
-# Get project paths - handle both development and CI build scenarios
-# When run via pyinstaller, we need to use SPECPATH or current working directory
-if hasattr(sys, '_MEIPASS'):
-    # Running as compiled executable
-    project_root = Path.cwd()
-else:
-    # Running from source - assume pyinstaller is run from project root
-    project_root = Path(os.environ.get('PYINSTALLER_ROOT', '.'))
+# Get project paths using PyInstaller's SPECPATH variable
+# SPECPATH is automatically set by PyInstaller to the directory containing the spec file
+spec_dir = Path(SPECPATH if 'SPECPATH' in globals() else os.path.dirname(os.path.abspath(__file__ if '__file__' in globals() else 'build_scripts')))
+project_root = spec_dir.parent  # Go up one level from build_scripts to project root
 src_path = project_root / "src"
 
 a = Analysis(
