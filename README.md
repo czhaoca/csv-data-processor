@@ -38,7 +38,28 @@ python main.py
 
 ## Installation
 
-### Run Directly
+### Download Pre-built Binaries
+
+1. Go to the [Releases](https://github.com/czhaoca/csv-splitter-gui/releases) page
+2. Download the latest version for your operating system:
+   - **Windows**: `CSV-Splitter-GUI.exe`
+   - **macOS**: `CSV-Splitter-GUI-macOS.zip` (extract and run the `.app`)
+   - **Linux**: Build from source (see below)
+
+3. Run the downloaded executable
+
+#### Windows Security Warning
+
+If you see "Windows protected your PC" warning:
+1. Click "More info"
+2. Click "Run anyway"
+
+Or right-click the .exe → Properties → Check "Unblock" → OK
+
+*Note: The executable is not code-signed. See [Code Signing Guide](docs/CODE_SIGNING.md) for details.*
+
+### Run from Source
+
 ```bash
 python main.py
 ```
