@@ -1,0 +1,31 @@
+# CSV Splitter GUI Requirements
+# This application primarily uses Python standard library modules
+
+# Core dependencies (only for type checking - runtime uses standard library)
+typing-extensions>=4.0.0; python_version<"3.8"
+
+# GUI Framework
+# tkinter is typically included with Python installations
+# If tkinter is not available, you may need to install it separately:
+# - On Ubuntu/Debian: sudo apt-get install python3-tk
+# - On CentOS/RHEL: sudo yum install tkinter
+# - On macOS: tkinter is included with Python from python.org
+# - On Windows: tkinter is included with Python installations
+
+# Development and testing dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.0.0
+
+# Code quality tools
+black>=22.0.0
+flake8>=5.0.0
+mypy>=1.0.0
+isort>=5.0.0
+
+# Documentation
+sphinx>=5.0.0
+
+# Build and packaging
+pyinstaller>=5.0.0
+cx-freeze>=6.0.0

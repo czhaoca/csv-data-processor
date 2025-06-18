@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sudo apt-get:*)",
+      "Bash(sudo apt-get install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python3:*)",
+      "Bash(pkill:*)",
+      "Bash(mkdir:*)",
+      "Bash(timeout 5 python3 main.py)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(timeout 3 python3 main.py)",
+      "Bash(chmod:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)"
+    ],
+    "deny": []
+  }
+}

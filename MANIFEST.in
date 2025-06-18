@@ -1,0 +1,27 @@
+# Include documentation
+recursive-include docs *.md *.rst *.txt
+include docs/*
+
+# Include examples
+recursive-include examples *.csv *.py
+
+# Include tests
+recursive-include tests *.py
+
+# Include legacy files
+recursive-include legacy *.py
+
+# Include configuration files
+include requirements.txt
+include pyproject.toml
+include setup.py
+include MANIFEST.in
+
+# Exclude build artifacts
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+global-exclude __pycache__
+global-exclude .git*
+global-exclude .DS_Store
+global-exclude *.so
