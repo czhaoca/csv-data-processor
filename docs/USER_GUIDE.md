@@ -86,6 +86,7 @@ python legacy/tb_seperator.py <source_csv_file>
 ### Helper Features
 
 - **Bulk Selection**: Use "Select All" / "Clear All" buttons for quick field management
+- **Field Reordering**: Use up/down arrow buttons (↑↓) to customize field order for consistent output
 - **Smart Defaults**: Output directory and field selections are intelligently suggested
 - **Real-time Validation**: Input validation with helpful error messages
 - **Progress Tracking**: Live updates during processing with row counts and file creation status

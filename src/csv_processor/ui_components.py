@@ -20,6 +20,7 @@ class FieldSelectionTable:
         self.scrollbar: Optional[ttk.Scrollbar] = None
         self.split_by_vars: Dict[str, tk.BooleanVar] = {}
         self.include_vars: Dict[str, tk.BooleanVar] = {}
+        self.field_order: List[str] = []
         
         self._setup_scrollable_frame()
     
@@ -47,6 +48,9 @@ class FieldSelectionTable:
         if not headers:
             return
         
+        # Store field order for maintaining original CSV column order
+        self.field_order = headers[:]
+        
         # Create table headers
         ttk.Label(
             self.scrollable_frame, 
@@ -66,11 +70,17 @@ class FieldSelectionTable:
             font=('TkDefaultFont', 9, 'bold')
         ).grid(row=0, column=2, padx=5, pady=2)
         
+        ttk.Label(
+            self.scrollable_frame, 
+            text="Order", 
+            font=('TkDefaultFont', 9, 'bold')
+        ).grid(row=0, column=3, padx=5, pady=2)
+        
         # Create separator
         ttk.Separator(
             self.scrollable_frame, 
             orient='horizontal'
-        ).grid(row=1, column=0, columnspan=3, sticky=(tk.W, tk.E), padx=5, pady=2)
+        ).grid(row=1, column=0, columnspan=4, sticky=(tk.W, tk.E), padx=5, pady=2)
         
         # Create field rows
         for i, header in enumerate(headers):
@@ -97,6 +107,24 @@ class FieldSelectionTable:
                 self.scrollable_frame, 
                 variable=include_var
             ).grid(row=row, column=2, padx=30, pady=1)
+            
+            # Order control buttons
+            order_frame = ttk.Frame(self.scrollable_frame)
+            order_frame.grid(row=row, column=3, padx=5, pady=1)
+            
+            ttk.Button(
+                order_frame,
+                text="↑",
+                width=3,
+                command=lambda h=header: self.move_field_up(h)
+            ).pack(side=tk.LEFT, padx=1)
+            
+            ttk.Button(
+                order_frame,
+                text="↓", 
+                width=3,
+                command=lambda h=header: self.move_field_down(h)
+            ).pack(side=tk.LEFT, padx=1)
     
     def clear(self) -> None:
         """Clear all widgets and variables."""
@@ -109,11 +137,11 @@ class FieldSelectionTable:
     
     def get_split_by_fields(self) -> List[str]:
         """Get list of fields selected for splitting."""
-        return [field for field, var in self.split_by_vars.items() if var.get()]
+        return [field for field in self.field_order if field in self.split_by_vars and self.split_by_vars[field].get()]
     
     def get_included_fields(self) -> List[str]:
         """Get list of fields selected for output."""
-        return [field for field, var in self.include_vars.items() if var.get()]
+        return [field for field in self.field_order if field in self.include_vars and self.include_vars[field].get()]
     
     def select_all_split_by(self) -> None:
         """Select all split by checkboxes."""
@@ -134,6 +162,49 @@ class FieldSelectionTable:
         """Clear all include field checkboxes."""
         for var in self.include_vars.values():
             var.set(False)
+    
+    def move_field_up(self, field_name: str) -> None:
+        """Move a field up in the order."""
+        if field_name not in self.field_order:
+            return
+            
+        current_index = self.field_order.index(field_name)
+        if current_index > 0:
+            # Swap with previous field
+            self.field_order[current_index], self.field_order[current_index - 1] = \
+                self.field_order[current_index - 1], self.field_order[current_index]
+            self._refresh_field_display()
+    
+    def move_field_down(self, field_name: str) -> None:
+        """Move a field down in the order."""
+        if field_name not in self.field_order:
+            return
+            
+        current_index = self.field_order.index(field_name)
+        if current_index < len(self.field_order) - 1:
+            # Swap with next field
+            self.field_order[current_index], self.field_order[current_index + 1] = \
+                self.field_order[current_index + 1], self.field_order[current_index]
+            self._refresh_field_display()
+    
+    def _refresh_field_display(self) -> None:
+        """Refresh the field display to reflect the new order."""
+        # Store current checkbox states
+        split_by_states = {field: var.get() for field, var in self.split_by_vars.items()}
+        include_states = {field: var.get() for field, var in self.include_vars.items()}
+        
+        # Clear and rebuild the display
+        self.clear()
+        self.update_fields(self.field_order)
+        
+        # Restore checkbox states
+        for field, state in split_by_states.items():
+            if field in self.split_by_vars:
+                self.split_by_vars[field].set(state)
+        
+        for field, state in include_states.items():
+            if field in self.include_vars:
+                self.include_vars[field].set(state)
 
 
 class LogDisplay:

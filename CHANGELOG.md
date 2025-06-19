@@ -5,6 +5,25 @@ All notable changes to the CSV Data Processor project will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2025-06-19
+
+### Added
+- **Field Reordering Feature**: Users can now customize the order of fields using intuitive GUI controls
+  - Added up/down arrow buttons (↑↓) for each field in the field selection table
+  - Field order is preserved during CSV processing and affects output file column order
+  - Checkbox selections are maintained during reordering operations
+  - Original CSV column order is preserved by default, with option for user customization
+
+### Fixed
+- **Field Ordering Consistency**: Fixed issue where field order was not preserved from user input
+  - Split-by fields now maintain user-specified order for consistent output file naming
+  - Output columns now appear in the same order as specified by the user
+  - Improved predictability of output file prefixes when using multiple split-by fields
+
+### Changed
+- **Enhanced Field Selection Interface**: Added "Order" column to field selection table
+- **Improved User Control**: Users now have full control over field ordering for both splitting and output
+
 ## [2.1.0] - 2025-06-18
 
 ### Changed

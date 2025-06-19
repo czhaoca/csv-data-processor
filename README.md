@@ -6,7 +6,8 @@ A modern, cross-platform Python GUI application for processing and manipulating 
 
 - **CSV splitting**: Split data by single or multiple field combinations
 - **Data transformation**: Manipulate and transform CSV data as needed
-- **Flexible field selection**: Choose exactly which fields to include in output files  
+- **Flexible field selection**: Choose exactly which fields to include in output files
+- **Field reordering**: Customize field order with intuitive up/down controls for consistent output
 - **Intuitive GUI**: Clean, modern interface with real-time feedback
 - **Memory efficient**: Handles large files without loading entire dataset
 - **Cross-platform**: Works on Windows, macOS, and Linux

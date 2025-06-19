@@ -44,7 +44,7 @@ for req in requirements:
 
 setup(
     name="csv-data-processor",
-    version="2.1.0",
+    version="2.1.1",
     author="CSV Data Processor Team",
     author_email="",
     description="A modern, modular Python GUI application for processing and manipulating CSV files",
