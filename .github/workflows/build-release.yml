@@ -24,12 +24,12 @@ jobs:
         pip install pyinstaller
     - name: Build Windows executable
       run: |
-        pyinstaller build_scripts/CSV-Splitter-GUI.spec --clean
+        pyinstaller build_scripts/CSV-Data-Processor.spec --clean
     - name: Sign Windows executable (if certificate available)
       if: env.WINDOWS_CERT_BASE64 != ''
       run: |
         echo "${{ secrets.WINDOWS_CERT_BASE64 }}" | base64 --decode > cert.p12
-        signtool sign /f cert.p12 /p "${{ secrets.WINDOWS_CERT_PASSWORD }}" /tr http://timestamp.digicert.com /td sha256 /fd sha256 dist/CSV-Splitter-GUI.exe
+        signtool sign /f cert.p12 /p "${{ secrets.WINDOWS_CERT_PASSWORD }}" /tr http://timestamp.digicert.com /td sha256 /fd sha256 dist/CSV-Data-Processor.exe
         rm cert.p12
       env:
         WINDOWS_CERT_BASE64: ${{ secrets.WINDOWS_CERT_BASE64 }}
@@ -38,7 +38,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: windows-executable
-        path: dist/CSV-Splitter-GUI.exe
+        path: dist/CSV-Data-Processor.exe
 
   build-macos:
     runs-on: macos-latest
@@ -54,13 +54,13 @@ jobs:
         pip install pyinstaller
     - name: Build macOS app
       run: |
-        pyinstaller build_scripts/CSV-Splitter-GUI-macOS.spec --clean
-        cd dist && zip -r CSV-Splitter-GUI-macOS.zip CSV-Splitter-GUI.app
+        pyinstaller build_scripts/CSV-Data-Processor-macOS.spec --clean
+        cd dist && zip -r CSV-Data-Processor-macOS.zip CSV-Data-Processor.app
     - name: Upload macOS artifact
       uses: actions/upload-artifact@v4
       with:
         name: macos-app
-        path: dist/CSV-Splitter-GUI-macOS.zip
+        path: dist/CSV-Data-Processor-macOS.zip
 
   create-release:
     needs: [build-windows, build-macos]
@@ -81,8 +81,8 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ./artifacts/CSV-Splitter-GUI.exe
-          ./artifacts/CSV-Splitter-GUI-macOS.zip
+          ./artifacts/CSV-Data-Processor.exe
+          ./artifacts/CSV-Data-Processor-macOS.zip
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
