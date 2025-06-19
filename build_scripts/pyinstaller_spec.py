@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-PyInstaller spec file for building CSV Splitter GUI executables.
+PyInstaller spec file for building CSV Data Processor executables.
 """
 
 import sys
@@ -22,16 +22,16 @@ a = Analysis(
     binaries=[],
     datas=[
         # Include source package
-        (str(src_path / "csv_splitter"), "csv_splitter"),
+        (str(src_path / "csv_processor"), "csv_processor"),
     ],
     hiddenimports=[
-        'csv_splitter',
-        'csv_splitter.gui',
-        'csv_splitter.processor',
-        'csv_splitter.config',
-        'csv_splitter.exceptions',
-        'csv_splitter.ui_components',
-        'csv_splitter.logger',
+        'csv_processor',
+        'csv_processor.gui',
+        'csv_processor.processor',
+        'csv_processor.config',
+        'csv_processor.exceptions',
+        'csv_processor.ui_components',
+        'csv_processor.logger',
         'tkinter',
         'tkinter.ttk',
         'tkinter.filedialog',
@@ -58,7 +58,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='CSV-Splitter-GUI',
+    name='CSV-Data-Processor',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

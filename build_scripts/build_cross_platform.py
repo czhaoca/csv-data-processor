@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Cross-platform build script for CSV Splitter GUI.
+Cross-platform build script for CSV Data Processor.
 Detects the current platform and runs the appropriate build process.
 """
 
@@ -96,24 +96,24 @@ def build_linux():
         "--clean",
         "--onefile",
         "--windowed",
-        "--name", "CSV-Splitter-GUI",
-        "--add-data", "src/csv_splitter:csv_splitter",
-        "--hidden-import", "csv_splitter",
-        "--hidden-import", "csv_splitter.gui",
-        "--hidden-import", "csv_splitter.processor",
-        "--hidden-import", "csv_splitter.config",
-        "--hidden-import", "csv_splitter.exceptions",
-        "--hidden-import", "csv_splitter.ui_components",
-        "--hidden-import", "csv_splitter.logger",
+        "--name", "CSV-Data-Processor",
+        "--add-data", "src/csv_processor:csv_processor",
+        "--hidden-import", "csv_processor",
+        "--hidden-import", "csv_processor.gui",
+        "--hidden-import", "csv_processor.processor",
+        "--hidden-import", "csv_processor.config",
+        "--hidden-import", "csv_processor.exceptions",
+        "--hidden-import", "csv_processor.ui_components",
+        "--hidden-import", "csv_processor.logger",
         "main.py"
     ]
     
     try:
         result = subprocess.run(cmd, check=True)
         
-        if (dist_dir / "CSV-Splitter-GUI").exists():
+        if (dist_dir / "CSV-Data-Processor").exists():
             print("✓ Linux build successful!")
-            print(f"Executable created: {dist_dir / 'CSV-Splitter-GUI'}")
+            print(f"Executable created: {dist_dir / 'CSV-Data-Processor'}")
             return True
         else:
             print("✗ Linux build failed!")

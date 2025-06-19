@@ -12,7 +12,7 @@ if readme_path.exists():
     with open(readme_path, "r", encoding="utf-8") as f:
         long_description = f.read()
 else:
-    long_description = "A modern, modular Python GUI application for splitting CSV files."
+    long_description = "A modern, modular Python GUI application for processing and manipulating CSV files."
 
 # Read requirements
 requirements_path = Path(__file__).parent / "requirements.txt"
@@ -43,14 +43,14 @@ for req in requirements:
         install_requires.append(req)
 
 setup(
-    name="csv-splitter-gui",
+    name="csv-data-processor",
     version="2.1.0",
-    author="CSV Splitter Team",
+    author="CSV Data Processor Team",
     author_email="",
-    description="A modern, modular Python GUI application for splitting CSV files",
+    description="A modern, modular Python GUI application for processing and manipulating CSV files",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/csv-splitter-gui",
+    url="https://github.com/yourusername/csv-data-processor",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[
@@ -77,20 +77,20 @@ setup(
     extras_require=extras_require,
     entry_points={
         "console_scripts": [
-            "csv-splitter=csv_splitter.cli:main",
+            "csv-processor=csv_processor.cli:main",
         ],
         "gui_scripts": [
-            "csv-splitter-gui=main:main",
+            "csv-data-processor=main:main",
         ],
     },
     include_package_data=True,
     package_data={
-        "csv_splitter": ["*.py"],
+        "csv_processor": ["*.py"],
     },
-    keywords="csv, data, processing, gui, tkinter, file-management",
+    keywords="csv, data, processing, gui, tkinter, file-management, manipulation",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/csv-splitter-gui/issues",
-        "Source": "https://github.com/yourusername/csv-splitter-gui",
-        "Documentation": "https://github.com/yourusername/csv-splitter-gui/tree/main/docs",
+        "Bug Reports": "https://github.com/yourusername/csv-data-processor/issues",
+        "Source": "https://github.com/yourusername/csv-data-processor",
+        "Documentation": "https://github.com/yourusername/csv-data-processor/tree/main/docs",
     },
 )

@@ -1,10 +1,10 @@
 # Build Instructions
 
-This document provides instructions for building standalone executables of CSV Splitter GUI for distribution.
+This document provides instructions for building standalone executables of CSV Data Processor for distribution.
 
 ## Overview
 
-The CSV Splitter GUI can be built into standalone executables for Windows, macOS, and Linux using PyInstaller. This allows users to run the application without installing Python or any dependencies.
+The CSV Data Processor can be built into standalone executables for Windows, macOS, and Linux using PyInstaller. This allows users to run the application without installing Python or any dependencies.
 
 ## Prerequisites
 
@@ -54,10 +54,10 @@ build_scripts\build_windows.bat
 #### Manual Build
 ```cmd
 pip install pyinstaller
-pyinstaller build_scripts/CSV-Splitter-GUI.spec --clean
+pyinstaller build_scripts/CSV-Data-Processor.spec --clean
 ```
 
-**Output**: `dist/CSV-Splitter-GUI.exe`
+**Output**: `dist/CSV-Data-Processor.exe`
 
 **Features**:
 - Single executable file
@@ -75,10 +75,10 @@ bash build_scripts/build_macos.sh
 #### Manual Build
 ```bash
 pip install pyinstaller
-pyinstaller build_scripts/CSV-Splitter-GUI-macOS.spec --clean
+pyinstaller build_scripts/CSV-Data-Processor-macOS.spec --clean
 ```
 
-**Output**: `dist/CSV Splitter GUI.app`
+**Output**: `dist/CSV Data Processor.app`
 
 **Features**:
 - macOS application bundle
@@ -97,10 +97,10 @@ python build_scripts/build_cross_platform.py
 #### Manual Build
 ```bash
 pip install pyinstaller
-pyinstaller --clean --onefile --windowed --name "CSV-Splitter-GUI" --add-data "src/csv_splitter:csv_splitter" main.py
+pyinstaller --clean --onefile --windowed --name "CSV-Data-Processor" --add-data "src/csv_processor:csv_processor" main.py
 ```
 
-**Output**: `dist/CSV-Splitter-GUI`
+**Output**: `dist/CSV-Data-Processor`
 
 **Features**:
 - Single executable file
@@ -152,7 +152,7 @@ To reduce executable size:
 
 #### "Module not found" errors
 - Solution: Add missing modules with `--hidden-import`
-- Example: `--hidden-import csv_splitter.processor`
+- Example: `--hidden-import csv_processor.processor`
 
 #### Large executable size
 - Normal for PyInstaller builds (typically 20-50MB)
@@ -171,17 +171,17 @@ To reduce executable size:
 
 #### Windows
 ```cmd
-dist\CSV-Splitter-GUI.exe
+dist\CSV-Data-Processor.exe
 ```
 
 #### macOS
 ```bash
-open "dist/CSV Splitter GUI.app"
+open "dist/CSV Data Processor.app"
 ```
 
 #### Linux
 ```bash
-./dist/CSV-Splitter-GUI
+./dist/CSV-Data-Processor
 ```
 
 ## Distribution
@@ -195,7 +195,7 @@ open "dist/CSV Splitter GUI.app"
 #### macOS
 - Create a DMG file:
   ```bash
-  hdiutil create -volname "CSV Splitter GUI" -srcfolder "dist/CSV Splitter GUI.app" -ov -format UDZO "CSV-Splitter-GUI-macOS.dmg"
+  hdiutil create -volname "CSV Data Processor" -srcfolder "dist/CSV Data Processor.app" -ov -format UDZO "CSV-Data-Processor-macOS.dmg"
   ```
 
 #### Linux
@@ -203,7 +203,7 @@ open "dist/CSV Splitter GUI.app"
 - Consider creating a `.deb` or `.rpm` package
 - Or create a tarball:
   ```bash
-  tar -czf CSV-Splitter-GUI-linux.tar.gz -C dist CSV-Splitter-GUI
+  tar -czf CSV-Data-Processor-linux.tar.gz -C dist CSV-Data-Processor
   ```
 
 ### File Sizes (Approximate)
@@ -265,7 +265,7 @@ pip install -e .
 python main.py
 
 # Or use installed command
-csv-splitter-gui
+csv-data-processor
 ```
 
 This approach is faster for development but requires Python to be installed.

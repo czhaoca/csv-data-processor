@@ -1,10 +1,11 @@
-# CSV Splitter GUI
+# CSV Data Processor
 
-A modern, cross-platform Python GUI application for splitting CSV files based on user-selected criteria.
+A modern, cross-platform Python GUI application for processing and manipulating CSV files according to user needs.
 
 ## Features
 
-- **Multi-field splitting**: Split data by single or multiple field combinations
+- **CSV splitting**: Split data by single or multiple field combinations
+- **Data transformation**: Manipulate and transform CSV data as needed
 - **Flexible field selection**: Choose exactly which fields to include in output files  
 - **Intuitive GUI**: Clean, modern interface with real-time feedback
 - **Memory efficient**: Handles large files without loading entire dataset
@@ -14,10 +15,10 @@ A modern, cross-platform Python GUI application for splitting CSV files based on
 
 ### Download Pre-built Binaries (Recommended)
 
-1. Go to the [Releases](https://github.com/czhaoca/csv-splitter-gui/releases) page
+1. Go to the [Releases](https://github.com/czhaoca/csv-data-processor/releases) page
 2. Download the latest version for your operating system:
-   - **Windows**: `CSV-Splitter-GUI.exe`
-   - **macOS**: `CSV-Splitter-GUI-macOS.zip` (extract and run the `.app`)
+   - **Windows**: `CSV-Data-Processor.exe`
+   - **macOS**: `CSV-Data-Processor-macOS.zip` (extract and run the `.app`)
    - **Linux**: Build from source (see below)
 
 3. Run the downloaded executable
@@ -34,8 +35,8 @@ If you see "Windows protected your PC" warning:
 
 ```bash
 # Clone the repository
-git clone https://github.com/czhaoca/csv-splitter-gui.git
-cd csv-splitter-gui
+git clone https://github.com/czhaoca/csv-data-processor.git
+cd csv-data-processor
 
 # Run the application
 python main.py
@@ -45,7 +46,7 @@ python main.py
 
 ```bash
 pip install -e .
-csv-splitter-gui
+csv-data-processor
 ```
 
 ## Documentation
@@ -84,8 +85,8 @@ python build_scripts/build_cross_platform.py
 ## Project Structure
 
 ```
-csv-splitter-gui/
-├── src/csv_splitter/        # Main application package
+csv-data-processor/
+├── src/csv_processor/       # Main application package
 ├── tests/                   # Test suite
 ├── docs/                    # Documentation
 ├── examples/                # Sample data and generators

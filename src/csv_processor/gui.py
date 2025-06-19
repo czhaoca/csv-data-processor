@@ -1,5 +1,5 @@
 """
-Main GUI application for CSV Splitter.
+Main GUI application for CSV Data Processor.
 """
 
 import tkinter as tk
@@ -17,15 +17,15 @@ from .ui_components import (
     ValidationHelper
 )
 from .logger import Logger, setup_gui_logging
-from .exceptions import CSVSplitterException
+from .exceptions import CSVProcessorException
 
 
-class CSVSplitterGUI:
-    """Main GUI application class for CSV Splitter."""
+class CSVProcessorGUI:
+    """Main GUI application class for CSV Data Processor."""
     
     def __init__(self, root: tk.Tk):
         """
-        Initialize the CSV Splitter GUI.
+        Initialize the CSV Data Processor GUI.
         
         Args:
             root: The main Tkinter window

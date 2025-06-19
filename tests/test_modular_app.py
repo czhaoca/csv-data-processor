@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test script for the refactored modular CSV Splitter application.
+Test script for the refactored modular CSV Data Processor application.
 """
 
 import sys
@@ -13,8 +13,8 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from csv_splitter import CSVProcessor, Logger
-from csv_splitter.processor import ProcessingResult
+from csv_processor import CSVProcessor, Logger
+from csv_processor.processor import ProcessingResult
 
 
 def create_test_csv():

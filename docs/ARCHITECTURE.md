@@ -1,8 +1,8 @@
-# CSV Splitter GUI - Architecture Documentation
+# CSV Data Processor - Architecture Documentation
 
 ## Overview
 
-The CSV Splitter GUI has been refactored from a monolithic application into a clean, modular architecture following software engineering best practices. This document outlines the design decisions, module structure, and benefits of the new architecture.
+The CSV Data Processor has been refactored from a monolithic application into a clean, modular architecture following software engineering best practices. This document outlines the design decisions, module structure, and benefits of the new architecture.
 
 ## Design Principles
 
@@ -31,7 +31,7 @@ Each module has a single, well-defined responsibility:
 ## Module Structure
 
 ```
-src/csv_splitter/
+src/csv_processor/
 ├── __init__.py          # Package initialization and exports
 ├── config.py            # Application configuration and constants
 ├── exceptions.py        # Custom exception classes
@@ -110,7 +110,7 @@ src/csv_splitter/
 
 ### Processing CSV Files
 ```python
-from csv_splitter import CSVProcessor
+from csv_processor import CSVProcessor
 
 def progress_callback(message):
     print(f"Progress: {message}")
@@ -131,7 +131,7 @@ else:
 
 ### Custom UI Components
 ```python
-from csv_splitter.ui_components import FieldSelectionTable
+from csv_processor.ui_components import FieldSelectionTable
 
 # Create field selection table
 field_table = FieldSelectionTable(parent_frame)
@@ -144,7 +144,7 @@ included_fields = field_table.get_included_fields()
 
 ### Configuration Management
 ```python
-from csv_splitter import Config
+from csv_processor import Config
 
 # Access configuration values
 window_title = Config.WINDOW_TITLE
@@ -183,7 +183,7 @@ The modular design enables comprehensive testing:
 
 ## Conclusion
 
-The refactored CSV Splitter GUI demonstrates modern Python development practices:
+The refactored CSV Data Processor demonstrates modern Python development practices:
 
 - **Clean Architecture**: Modular, maintainable, and extensible
 - **Type Safety**: Comprehensive type hints for reliability

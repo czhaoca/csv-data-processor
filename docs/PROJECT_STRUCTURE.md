@@ -1,13 +1,13 @@
 # Project Structure
 
-This document describes the organization and structure of the CSV Splitter GUI project.
+This document describes the organization and structure of the CSV Data Processor project.
 
 ## Directory Layout
 
 ```
-csv-splitter-gui/
+csv-data-processor/
 ├── src/                     # Source code package
-│   └── csv_splitter/        # Main application package
+│   └── csv_processor/       # Main application package
 │       ├── __init__.py      # Package initialization
 │       ├── config.py        # Configuration and constants
 │       ├── exceptions.py    # Custom exception classes
@@ -45,7 +45,7 @@ csv-splitter-gui/
 
 ## Package Structure
 
-### `src/csv_splitter/` - Main Package
+### `src/csv_processor/` - Main Package
 
 #### Core Modules
 
@@ -98,23 +98,23 @@ csv-splitter-gui/
 
 ```python
 # Main package imports
-from csv_splitter import CSVSplitterGUI, CSVProcessor, Config, Logger
+from csv_processor import CSVProcessorGUI, CSVProcessor, Config, Logger
 
 # Specific module imports
-from csv_splitter.processor import ProcessingResult
-from csv_splitter.exceptions import ValidationError, ProcessingError
-from csv_splitter.ui_components import FieldSelectionTable, LogDisplay
+from csv_processor.processor import ProcessingResult
+from csv_processor.exceptions import ValidationError, ProcessingError
+from csv_processor.ui_components import FieldSelectionTable, LogDisplay
 ```
 
 ### Entry Point Usage
 
 ```python
 # From main.py
-from csv_splitter import CSVSplitterGUI, Logger
+from csv_processor import CSVProcessorGUI, Logger
 
 # From tests
-from csv_splitter import CSVProcessor
-from csv_splitter.processor import ProcessingResult
+from csv_processor import CSVProcessor
+from csv_processor.processor import ProcessingResult
 ```
 
 ## Development Workflow
@@ -127,7 +127,7 @@ python main.py
 
 # As installed package
 pip install -e .
-csv-splitter-gui
+csv-data-processor
 ```
 
 ### Running Tests
@@ -184,19 +184,19 @@ flake8 src/ tests/
 ## Adding New Features
 
 ### 1. Core Processing Features
-Add to `src/csv_splitter/processor.py`:
+Add to `src/csv_processor/processor.py`:
 - Extend `CSVProcessor` class
 - Add new processing methods
 - Update `ProcessingResult` if needed
 
 ### 2. UI Features
-Add to `src/csv_splitter/ui_components.py`:
+Add to `src/csv_processor/ui_components.py`:
 - Create new component classes
 - Follow existing patterns
 - Integrate with main GUI in `gui.py`
 
 ### 3. Configuration
-Add to `src/csv_splitter/config.py`:
+Add to `src/csv_processor/config.py`:
 - Add new constants or settings
 - Use `Final` type annotations
 - Group related settings together
@@ -230,4 +230,4 @@ pip install -e .
 pip install .
 ```
 
-This structure provides a solid foundation for maintaining and extending the CSV Splitter GUI application while following Python packaging best practices.
+This structure provides a solid foundation for maintaining and extending the CSV Data Processor application while following Python packaging best practices.

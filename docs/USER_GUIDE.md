@@ -1,6 +1,6 @@
-# CSV Splitter GUI
+# CSV Data Processor
 
-A modern, modular Python GUI application for splitting CSV files based on user-selected criteria. Built with clean architecture principles, this tool provides an intuitive interface for advanced CSV data manipulation and organization.
+A modern, modular Python GUI application for processing and manipulating CSV files based on user-selected criteria. Built with clean architecture principles, this tool provides an intuitive interface for advanced CSV data manipulation and organization.
 
 ## Overview
 
@@ -45,7 +45,7 @@ This application enables users to split large CSV files into multiple organized 
 1. **Clone or download the application**:
    ```bash
    git clone <repository-url>
-   cd csv-splitter-gui
+   cd csv-data-processor
    ```
 
 2. **Install dependencies (optional - only for development)**:
@@ -63,7 +63,7 @@ This application enables users to split large CSV files into multiple organized 
 **Install as a package**:
 ```bash
 pip install -e .
-csv-splitter-gui
+csv-data-processor
 ```
 
 **Legacy Command Line (original version)**:
@@ -174,7 +174,7 @@ This tool is particularly useful for:
 ### Modular Structure
 
 ```
-src/csv_splitter/
+src/csv_processor/
 ├── __init__.py          # Package initialization
 ├── config.py            # Configuration and constants
 ├── exceptions.py        # Custom exception classes
@@ -233,7 +233,7 @@ The application includes comprehensive tests:
 pytest
 
 # Run with coverage
-pytest --cov=src/csv_splitter
+pytest --cov=src/csv_processor
 
 # Test specific functionality
 python test_gui_functionality.py

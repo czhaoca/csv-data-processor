@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test script to verify the updated CSV splitter functionality
+Test script to verify the updated CSV data processor functionality
 """
 
 import csv
@@ -13,7 +13,7 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from csv_splitter.gui import CSVSplitterGUI
+from csv_processor.gui import CSVProcessorGUI
 
 def test_csv_processing():
     """Test the core CSV processing logic"""

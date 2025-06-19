@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-CSV Splitter GUI Application
+CSV Data Processor Application
 
-A modular, user-friendly application for splitting CSV files based on field values.
+A modular, user-friendly application for processing and manipulating CSV files according to user needs.
 """
 
 import sys
@@ -13,24 +13,24 @@ from pathlib import Path
 src_path = Path(__file__).parent / "src"
 sys.path.insert(0, str(src_path))
 
-from csv_splitter import CSVSplitterGUI, Logger
+from csv_processor import CSVProcessorGUI, Logger
 
 
 def main():
-    """Main entry point for the CSV Splitter GUI application."""
+    """Main entry point for the CSV Data Processor application."""
     try:
         # Initialize logging
         logger = Logger.get_logger(__name__)
-        logger.info("Starting CSV Splitter GUI application")
+        logger.info("Starting CSV Data Processor application")
         
         # Create and configure main window
         root = tk.Tk()
         
         # Initialize GUI application
-        app = CSVSplitterGUI(root)
+        app = CSVProcessorGUI(root)
         
         # Start the GUI event loop
-        logger.info("CSV Splitter GUI ready")
+        logger.info("CSV Data Processor ready")
         root.mainloop()
         
     except KeyboardInterrupt:
@@ -41,7 +41,7 @@ def main():
         traceback.print_exc()
         sys.exit(1)
     finally:
-        logger.info("CSV Splitter GUI application closed")
+        logger.info("CSV Data Processor application closed")
 
 
 if __name__ == "__main__":
